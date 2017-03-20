@@ -1,0 +1,21 @@
+//写一个事件兼容的方法，要求兼容标准浏览器，ie7 8
+<script type="text/javascript">
+	function addEvent(ele,type,fn){
+		if(ele.addEventListener){
+			ele.addEventListener(type,fn,false);
+		}else if(ele.attachEvent){
+			ele.attachEvent("on"+type,fn);
+		}else{
+			ele["on"+type]=fn;
+		}
+	}
+  function removeEvent(ele,type,fn){
+		if(ele.removeEventListener){
+			ele.removeEventListener(type,fn,false);
+		}else if(ele.detachEvent){
+			ele.detachEvent("on"+type,fn);
+		}else{
+			ele["on"+type]=null;
+		}
+	}
+</script>
